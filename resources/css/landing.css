@@ -31,14 +31,10 @@ body.landing{
 /*Content*/
 .selling-points{
   position: relative;
-  display: table;
-  width: 100%;
 }
 
 .point{
-  display: table-cell;
   position: relative;
-  width: 33.3%; /*Seems like bootstrap solves a lot of this...*/
   padding: 2rem;
   text-align: center;
 }
