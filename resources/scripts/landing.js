@@ -1,19 +1,18 @@
 //Global Scope
-var points = document.getElementsByClassName('point');
-//Selling Points Animation
-var animatePoints = function() {
+var pointsArray = document.getElementsByClassName('point');
 
-  var revealPoint = function(index){
-    points[index].style.opacity = 1;
-    points[index].style.transform = "scaleX(1) translateY(0)"
-    points[index].style.mstransform = "scaleX(1) translateY(0)"
-    points[index].style.Webkittransform = "scaleX(1) translateY(0)"
-  };
-
-  for (i=0;i<points.length;i++){
-    revealPoint(i);
-  }
+var revealPoint = function(point){
+  point.style.opacity = 1;
+  point.style.transform = "scaleX(1) translateY(0)";
+  point.style.mstransform = "scaleX(1) translateY(0)";
+  point.style.Webkittransform = "scaleX(1) translateY(0)";
 };
+
+//Selling Points Animation
+var animatePoints = function(points) {
+  forEach(points, revealPoint);
+};
+
 //Event Listeners
   window.onload = function() {
 
