@@ -56,25 +56,25 @@ var createSongRow = function(songNumber, songName, songLength) {
 
     return template;
 };
+// #1 assign values to album properties on the page
+var albumTitle = document.getElementsByClassName('album-view-title')[0];
+var albumArtist = document.getElementsByClassName('album-view-artist')[0];
+var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
+var albumImage = document.getElementsByClassName('album-cover-art')[0];
+var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
  //load the current albums HTML
  var setCurrentAlbum = function(album) {
-    // #1 assign values to album properties on the page
-    var albumTitle = document.getElementsByClassName('album-view-title')[0];
-    var albumArtist = document.getElementsByClassName('album-view-artist')[0];
-    var albumReleaseInfo = document.getElementsByClassName('album-view-release-info')[0];
-    var albumImage = document.getElementsByClassName('album-cover-art')[0];
-    var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
 
-    // #2 Put the album info into the associated property places
+    // Put the album info into the associated property places
     albumTitle.firstChild.nodeValue = album.title;
     albumArtist.firstChild.nodeValue = album.artist;
     albumReleaseInfo.firstChild.nodeValue = album.year + ' ' + album.label;
     albumImage.setAttribute('src', album.albumArtUrl);
 
-    // #3 clear out the html for the song list
+    // clear out the html for the song list
     albumSongList.innerHTML = '';
 
-    // #4 populate the song list
+    // populate the song list
     for (var i = 0; i < album.songs.length; i++) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
@@ -88,6 +88,7 @@ var songRows = document.getElementsByClassName('album-view-song-item');
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
 
+    //song play button appear
     songListContainer.addEventListener('mouseover', function(event) {
       if (event.target.parentElement.className === 'album-view-song-item') {
         event.target.parentElement.querySelector('.song-item-number').innerHTML = playButtonTemplate;
@@ -99,23 +100,15 @@ window.onload = function() {
            this.children[0].innerHTML = this.children[0].getAttribute('data-song-number');
        });
     }
+    //album click functionality
+    var cycleAlbums = [albumPicasso, albumMarconi, albumBabe];
+    var curAlbum = 1;
+    albumImage.addEventListener('click',function(event){
+      setCurrentAlbum(cycleAlbums[curAlbum]);
+      curAlbum++;
+      if(curAlbum === cycleAlbums.length){
+        curAlbum = 0;
+      }
+    }
 
 };
-
-var cycleAlbums = [albumPicasso, albumMarconi, albumBabe];
-var curAlbum = 0;
-
-function nextAlbum(){
-  if(curAlbum === cycleAlbums.length-1){
-    curAlbum = 0;
-  } else {
-    curAlbum++
-  }
-  return cycleAlbums[curAlbum]
-};
-
-function moveToNextAlbum(){
-  setCurrentAlbum(nextAlbum());
-}
-
-document.getElementsByTagName("img")[1].addEventListener("click", moveToNextAlbum);
