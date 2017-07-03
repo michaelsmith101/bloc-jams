@@ -101,14 +101,14 @@ window.onload = function() {
        });
     }
     //album click functionality
-    var cycleAlbums = [albumPicasso, albumMarconi, albumBabe];
-    var curAlbum = 1;
+    var albums = [albumPicasso, albumMarconi, albumBabe];
+    var index = 1;
     albumImage.addEventListener('click',function(event){
-      setCurrentAlbum(cycleAlbums[curAlbum]);
-      curAlbum++;
-      if(curAlbum === cycleAlbums.length){
-        curAlbum = 0;
+      setCurrentAlbum(albums[index]);
+      index++;
+      if(index == cycleAlbums.length){
+        index = 0;
       }
-    }
+    });
 
 };
