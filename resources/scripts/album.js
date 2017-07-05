@@ -78,6 +78,8 @@ var albumSongList = document.getElementsByClassName('album-view-song-list')[0];
     for (var i = 0; i < album.songs.length; i++) {
         albumSongList.innerHTML += createSongRow(i + 1, album.songs[i].title, album.songs[i].duration);
     }
+
+    playButtonInteraction();
 };
 var findParentByClassName = function(element, targetClass) {
     if (element) {
@@ -136,14 +138,12 @@ var clickHandler = function(targetElement) {
 };
 window.onload = function() {
     setCurrentAlbum(albumPicasso);
-    playButtonInteraction();
 
     //album click functionality
     var albums = [albumPicasso, albumMarconi, albumBabe];
     var index = 1;
     albumImage.addEventListener('click',function(event){
       setCurrentAlbum(albums[index]);
-      playButtonInteraction();
       index++;
       if(index == albums.length){
         index = 0;
