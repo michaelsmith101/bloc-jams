@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300">
-    <link rel="stylesheet" type="text/css" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,800,600,700,300" rel="stylesheet" type="text/css">
+    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet" type="text/css">
     <link href="./resources/css/normalize.css" type="text/css" rel="stylesheet">
     <link href="./resources/css/main.css" type="text/css" rel="stylesheet">
     <link href="./resources/css/album.css" type="text/css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/player_bar.css">
+    <link href="./resources/css/player_bar.css" rel="stylesheet" type="text/css">
     <title>Bloc Jams</title>
   </head>
   <body class="album">
@@ -62,7 +62,12 @@
              <h2 class="artist-song-mobile">Placeholder Song - Placeholder Artist</h2>
              <h3 class="artist-name">Placeholder Artist</h3>
            </div>
-           <div class="control-group volume">
+              <div class="control-group volume">
+                <span class="ion-volume-high icon"></span>
+                <div class="seek-bar">
+                  <div class="fill"></div>
+                  <div class="thumb"></div>
+               </div>      
            </div>
        </div>
     </section>

@@ -94,7 +94,7 @@
     height: 0.5rem;
     width: 0.5rem;
     background-color: white;
-    left: 36%;
+    left: 50%;
     top: 50%;
     /* #1 account for the size increase and hold the element's position in place so that the change in size doesn't adjust the position of other elements. */
     margin-left: -0.25rem;
@@ -128,4 +128,15 @@
 .player-bar .volume {
     width: 25%;
     text-align: right;
+}
+.player-bar .volume .icon {
+    font-size: 1.1rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.player-bar .volume .seek-bar {
+    display: inline-block;
+    width: 5.75rem;
+    vertical-align: middle;
 }
