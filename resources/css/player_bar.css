@@ -1,3 +1,4 @@
+/*//Player Bar Container//*/
 .player-bar {
     position: fixed;
     bottom: 0;
@@ -29,7 +30,7 @@
     display: table-cell;
     vertical-align: middle;
 }
-
+/*//Main Controls//*/
 .player-bar .main-controls {
     width: 25%;
     text-align: left;
@@ -43,6 +44,7 @@
     margin-right: 15%;
     font-size: 1.6rem;
 }
+/*//Currently Playing Labels//*/
 .player-bar .currently-playing {
     width: 50%;
     text-align: center;
@@ -58,6 +60,7 @@
     width: 100%;
     font-weight: 300;
 }
+/*//Progress Bar//*/
 .seek-control {
     position: relative;
     font-size: 0.8rem;
@@ -124,7 +127,7 @@
 .player-bar .currently-playing .artist-song-mobile {
     display: none;
 }
-
+/*//Volume//*/
 .player-bar .volume {
     width: 25%;
     text-align: right;
@@ -139,4 +142,39 @@
     display: inline-block;
     width: 5.75rem;
     vertical-align: middle;
+}
+/*Mobile*/
+@media (max-width: 640px) {
+    .player-bar {
+        padding: 1rem;
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .player-bar .main-controls,
+    .player-bar .currently-playing,
+    .player-bar .volume {
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .player-bar .main-controls,
+    .player-bar .volume {
+        min-height: 3.5rem;
+    }
+
+    .player-bar .currently-playing {
+        min-height: 2.5rem;
+    }
+
+    .player-bar .artist-name,
+    .player-bar .song-name {
+        display: none;
+    }
+
+    .player-bar .currently-playing .artist-song-mobile {
+        display: block;
+    }
 }
