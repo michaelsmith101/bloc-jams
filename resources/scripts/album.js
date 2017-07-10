@@ -141,21 +141,20 @@ var clickHandler = function(targetElement) {
          currentlyPlayingSong = songItem.getAttribute('data-song-number');
      }
 };
-window.onload = function() {
+$(window).load(function() {
     setCurrentAlbum(albumPicasso);
 
     //album click functionality
     var albums = [albumPicasso, albumMarconi, albumBabe];
     var index = 1;
-    albumImage.addEventListener('click',function(event){
+    $('.album-cover-art').on('click',function(){
       setCurrentAlbum(albums[index]);
       index++;
       if(index == albums.length){
         index = 0;
       }
     });
-
-};
+});
 function playButtonInteraction(){
 
       //song play button appear
