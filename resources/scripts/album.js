@@ -16,7 +16,9 @@ $(window).load(function() {
 });
 
 //create song row
-var currentlyPlayingSong = null;
+var currentlyPlayingSongNumber = null;
+var currentlySongFromAlbum = null;
+var currentAlbum = null;
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 
@@ -72,7 +74,7 @@ var createSongRow = function(songNumber, songName, songLength) {
 
  //load the current albums HTML
  var setCurrentAlbum = function(album) {
-
+   currentAlbum = album;
    // assign values to album properties on the page
    var $albumTitle = $('.album-view-title');
    var $albumArtist = $('.album-view-artist');
