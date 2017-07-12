@@ -200,11 +200,31 @@ var previousSong = function() {
     $previousSongNumberCell.html(pauseButtonTemplate);
     $lastSongNumberCell.html(lastSongNumber);
 };
+var togglePlayFromPlayerBar = function() {
+  if(currentlyPlayingSongNumber === null){
+    setSong(1);
+    $('.main-controls .play-pause').html(playerBarPauseButton);
+    $('.song-item-number').first().html(pauseButtonTemplate);
+    updatePlayerBarSong();
+    currentSoundFile.play();
+  } else {
+    if (currentSoundFile.isPaused()) {
+      $('.main-controls .play-pause').html(playerBarPauseButton);
+      currentSoundFile.play();
+    } else {
+       $('.main-controls .play-pause').html(playerBarPlayButton);
+       currentSoundFile.pause();
+    }
+  }
+
+};
 
 var $previousButton = $('.main-controls .previous');
 var $nextButton = $('.main-controls .next');
+var $playPauseButton = $('.main-controls .play-pause');
 
 $previousButton.click(previousSong);
 $nextButton.click(nextSong);
+$playPauseButton.click(togglePlayFromPlayerBar);
 
 });
