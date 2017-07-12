@@ -20,12 +20,19 @@ var currentlyPlayingSongNumber = null;
 var currentSongFromAlbum = null;
 var currentAlbum = null;
 var currentSoundFile = null;
+var currentVolume = 80;
+
 var playButtonTemplate = '<a class="album-song-button"><span class="ion-play"></span></a>';
 var pauseButtonTemplate = '<a class="album-song-button"><span class="ion-pause"></span></a>';
 var playerBarPlayButton = '<span class="ion-play"></span>';
 var playerBarPauseButton = '<span class="ion-pause"></span>';
 
 var setSong = function(songNumber){
+
+  if (currentSoundFile) {
+       currentSoundFile.stop();
+  }
+
   currentlyPlayingSongNumber = parseInt(songNumber);
   currentSongFromAlbum = currentAlbum.songs[songNumber - 1];
 
@@ -34,6 +41,14 @@ var setSong = function(songNumber){
        preload: true
    });
 
+   setVolume(currentVolume);
+
+};
+
+var setVolume = function(volume) {
+    if (currentSoundFile) {
+        currentSoundFile.setVolume(volume);
+    }
 };
 
 var getSongNumberCell = function(number){
@@ -71,7 +86,7 @@ var createSongRow = function(songNumber, songName, songLength) {
         } else {
            $(this).html(playButtonTemplate);
            $('.main-controls .play-pause').html(playerBarPlayButton);
-           currentSoundFile.pause();   
+           currentSoundFile.pause();
         }
     	}
 
@@ -151,6 +166,7 @@ var trackIndex = function(album, song) {
 
     currentlyPlayingSongNumber = currentSongIndex + 1;
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    currentSoundFile.play();
 
     updatePlayerBarSong();
 
@@ -172,6 +188,7 @@ var previousSong = function() {
 
     currentlyPlayingSongNumber = currentSongIndex + 1;
     currentSongFromAlbum = currentAlbum.songs[currentSongIndex];
+    currentSoundFile.play();
 
     updatePlayerBarSong();
 
